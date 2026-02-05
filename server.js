@@ -17,7 +17,7 @@ app.use(logReq)
 
 
 //Routes
-app.use("/api/char",portfolioRoutes)
+app.use("/api/portfolio",portfolioRoutes)
 
 //Global Middleware
 app.use(globalErr)
