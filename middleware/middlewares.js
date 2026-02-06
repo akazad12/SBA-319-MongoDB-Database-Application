@@ -1,7 +1,7 @@
 export function logReq(req, res, next) {
     console.log(`${req.method} -- ${req.url} -- ${new Date().toLocaleTimeString}`,
     );
-    if (req.body) console.log.table(req.body);
+    if (req.body) console.table(req.body);
 
     next()
 }
