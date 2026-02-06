@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
-import { boolean } from "webidl-conversions";
 
 const stockSchema = new mongoose.Schema({
+    stockId: {
+            type:mongoose.Types.ObjectId,
+            ref: "stockref",
+        },
     symbol:{
         type: String,
         required: true,
