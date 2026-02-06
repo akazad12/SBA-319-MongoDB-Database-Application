@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import {logReq,globalErr} from "./middleware/middlewares.js"
 import connectDB from "./db/conn.js"
 import portfolioRoutes from "./routes/portfolioRoutes.js"
+import stockRoutes from "./routes/stockRoutes.js"
 
 
 //Setups
@@ -19,6 +20,7 @@ app.use(logReq)
 
 //Routes
 app.use("/api/portfolio",portfolioRoutes)
+app.use("/api/stock",stockRoutes);
 
 //Global Middleware
 app.use(globalErr)

@@ -21,9 +21,6 @@ const portfolioSchema = new mongoose.Schema({
             message: `{VALUE} should be traditional or modern`,
         },
     },
-    diversification: {
-        type: Number,
-    },
     totalAssetValue: {
         type: Number,
     },
