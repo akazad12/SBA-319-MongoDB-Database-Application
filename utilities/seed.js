@@ -21,15 +21,18 @@ async function seedDatabase() {
         await Transaction.deleteMany({});
         console.log('✅ Deleted Previous Transactions')
 
-        await Portfolio.create(portfolios);
+        const SavedPortfolios = await Portfolio.create(portfolios);
         console.log('✅ Added New Portfolios')
-        await Stock.create(stocks);
+        const savedStocks = await Stock.create(stocks);
         console.log('✅ Added New Stocks')
         // await Transaction.create(genTransactions);
         // P = await portfolios.find();
         // S = await stocks.find();
-        const transaction = genTransactions(Portfolio,Stock);
-        await Transaction.create(genTransactions)
+        const transaction = genTransactions(SavedPortfolios,savedStocks);
+        await Transaction.create(transaction)
+        // console.log('sample port', portfolios[0])
+        // console.log('sample stock',stocks[0])
+        // console.log('sample transaction',transaction[0])
         console.log('✅ Generated new Transactions')
 
         console.log('🎉Successfully Seeded!')
