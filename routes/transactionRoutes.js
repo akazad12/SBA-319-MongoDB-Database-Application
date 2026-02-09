@@ -1,7 +1,10 @@
 import express from "express";
 import Transaction from "../models/transactionSchema.js"
+import Portfolio from "../models/portfolioSchema.js";
+import Stock from "../models/stockSchema.js";
 
 const router = express.Router();
+
 
 // router.route('/').post(async (req,res)=>{
 //     let newTran = await 
@@ -15,9 +18,17 @@ router.route('/')
 })
 //Read - Show All
 .get(async(req,res)=>{
-    let allTrans = await Transaction.find({});
+    try{
+        const portfolio = await Portfolio.find().populate(portID)
+        const stock = await Stock.find().populate(stockID)
 
-    res.json(allTrans)
+        let allTrans = await Transaction.find({});
+
+        res.json(allTrans)
+
+    } catch (err){
+        res.status(500).json({error: "Failed to Populate data"})
+    }
 })
 
 //Update

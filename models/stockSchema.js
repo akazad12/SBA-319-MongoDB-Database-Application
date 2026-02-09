@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const stockSchema = new mongoose.Schema({
-    stockId: {
-            type:mongoose.Types.ObjectId,
-            ref: "stockref",
-        },
     symbol:{
         type: String,
         required: true,
@@ -33,5 +29,8 @@ const stockSchema = new mongoose.Schema({
 
 
 })
+
+
+//const Stock = mongoose.model("Stock",stockSchema)
 
 export default mongoose.model("Stock",stockSchema)

@@ -1,14 +1,9 @@
 import mongoose from "mongoose";
-import { type } from "node:os";
-import { object } from "webidl-conversions";
+
 
 const accountType = ["traditional","modern"]
 
 const portfolioSchema = new mongoose.Schema({
-    userId: {
-        type:mongoose.Types.ObjectId,
-        ref: "User",
-    },
     name: {
         type:String,
         required: true,
@@ -35,6 +30,7 @@ const portfolioSchema = new mongoose.Schema({
     }]
 
 })
+// const Portfolio = mongoose.model("Portfolio",portfolioSchema)
 
 export default mongoose.model("Portfolio",portfolioSchema)
 // import mongoose, { Types } from "mongoose";
