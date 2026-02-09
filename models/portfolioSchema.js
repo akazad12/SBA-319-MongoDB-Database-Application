@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 
-const accountType = ["traditional","modern"]
+const accountType = ["traditional", "modern"]
 
 const portfolioSchema = new mongoose.Schema({
     name: {
-        type:String,
+        type: String,
         required: true,
     },
     accType: {
@@ -30,15 +30,10 @@ const portfolioSchema = new mongoose.Schema({
     }]
 
 })
-// const Portfolio = mongoose.model("Portfolio",portfolioSchema)
 
-export default mongoose.model("Portfolio",portfolioSchema)
-// import mongoose, { Types } from "mongoose";
-// import type { InferSchemaType } from "mongoose";
+//indexes by name of person
+portfolioSchema.index({ name: 1 })
+//index by whether an account type is modern and if it is also manually managed by the company
+portfolioSchema.index({ accountType: 'modern', managed: true })
 
-// const journalEntrySchema = new mongoose.Schema({
-//   authorId: {
-//     type: Types.ObjectId,
-//     ref: 'User',
-//     required: true,
-//   },
+export default mongoose.model("Portfolio", portfolioSchema)

@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const stockSchema = new mongoose.Schema({
-    symbol:{
+    symbol: {
         type: String,
         required: true,
         uppercase: true,
     },
-    companyName:{
+    companyName: {
         type: String,
         required: true,
     },
@@ -14,7 +14,7 @@ const stockSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    sector:{
+    sector: {
         type: String,
         default: 'Unknown'
     },
@@ -30,7 +30,10 @@ const stockSchema = new mongoose.Schema({
 
 })
 
+stockSchema.index({ symbol: 1 });
+stockSchema.index({ sector: 1, techStock: 1 });
+
 
 //const Stock = mongoose.model("Stock",stockSchema)
 
-export default mongoose.model("Stock",stockSchema)
+export default mongoose.model("Stock", stockSchema)
