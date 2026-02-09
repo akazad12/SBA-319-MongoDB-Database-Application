@@ -6,13 +6,13 @@ import connectDB from "./db/conn.js"
 import portfolioRoutes from "./routes/portfolioRoutes.js"
 import stockRoutes from "./routes/stockRoutes.js"
 import transRoutes from "./routes/transactionRoutes.js"
-import connectDB from './db/conn.js';
+
 
 
 //Setups
 dotenv.config();
 const app = express();
-const PORT = process.env.Port || 3001;
+const PORT = process.env.PORT || 3001;
 connectDB();
 
 //Middleware
@@ -21,8 +21,8 @@ app.use(logReq)
 
 
 //Routes
-app.use("/api/portfolio",portfolioRoutes)
-app.use("/api/stock",stockRoutes);
+app.use("/api/portfolios",portfolioRoutes)
+app.use("/api/stocks",stockRoutes);
 app.use("/api/transactions",transRoutes);
 
 //Global Middleware

@@ -19,15 +19,20 @@ router.route('/')
 //Read - Show All
 .get(async(req,res)=>{
     try{
-        const portfolio = await Portfolio.find().populate(portID)
-        const stock = await Stock.find().populate(stockID)
-
-        let allTrans = await Transaction.find({});
+    let allTrans = await Transaction.find()
+        .populate({
+            path: "portID",
+            select: 'name'
+        })
+        .populate({
+            path: "stockID",
+            select: 'symbol'
+        });
 
         res.json(allTrans)
 
     } catch (err){
-        res.status(500).json({error: "Failed to Populate data"})
+        res.status(500).json({error: "Failed to retrieve data"})
     }
 })
 
