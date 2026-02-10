@@ -30,10 +30,23 @@ const stockSchema = new mongoose.Schema({
 
 })
 
+//Indexes
 stockSchema.index({ symbol: 1 });
 stockSchema.index({ sector: 1, techStock: 1 });
 
+//Methods
+stockSchema.statics.findBySector = function (getSector){
+    return this.find({sector: getSector })
+};
 
-//const Stock = mongoose.model("Stock",stockSchema)
+stockSchema.statics.findBySymbol = function (symbol){
+    return this.findOne({symbol: symbol.toUpperCase()})
+};
+
+stockSchema.methods.updatePrice = async function (newPrice){
+    this.currentPrice = newPrice;
+    return this.save();
+};
+
 
 export default mongoose.model("Stock", stockSchema)
