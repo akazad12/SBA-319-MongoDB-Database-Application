@@ -25,9 +25,7 @@ async function seedDatabase() {
         console.log('✅ Added New Portfolios')
         const savedStocks = await Stock.create(stocks);
         console.log('✅ Added New Stocks')
-        // await Transaction.create(genTransactions);
-        // P = await portfolios.find();
-        // S = await stocks.find();
+        
         const transaction = genTransactions(SavedPortfolios,savedStocks);
         await Transaction.create(transaction)
         // console.log('sample port', portfolios[0])

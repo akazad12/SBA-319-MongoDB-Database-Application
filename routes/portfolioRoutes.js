@@ -50,11 +50,26 @@ router.route("/:id")
 })
 
 // Get Portfolio with assets above a certain amoount
-router.route("/:price/totalAssetValue")
+router.route("/:price/gtasset")
 .get(async(req,res)=>{
     let assets = await Portfolio.priceAbove(Number(req.params.price));
 
     res.json(assets)
+});
+//finds Portfolios with assets below a certain amount
+router.route("/:price/ltasset")
+.get(async(req,res)=>{
+    let assets = await Portfolio.priceBelow(Number(req.params.price));
+
+    res.json(assets)
+})
+//finds all portfolios that own certain stock
+router.route("/stock/:symbol")
+.get(async(req,res)=>{
+    
+    let filtByStock = await Portfolio.findStock((req.params.symbol));
+
+    res.json(filtByStock)
 })
 
 
