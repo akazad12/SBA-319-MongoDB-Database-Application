@@ -17,7 +17,7 @@ router.route('/')
 
             res.json(newTran)
         } catch (err){
-            res.status(500).json({ error: "Failed to retrieve data" })
+            res.status(500).json({ error: "Failed to create transaction" })
         }
 })
     //Read - Show All
@@ -36,7 +36,7 @@ router.route('/')
             res.json(allTrans)
 
         } catch (err) {
-            res.status(500).json({ error: "Failed to retrieve data" })
+            res.status(500).json({ error: "Failed to retrieve transactions" })
         }
     })
 

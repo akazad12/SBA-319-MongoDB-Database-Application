@@ -49,5 +49,13 @@ router.route("/:id")
     res.json(port)
 })
 
+// Get Portfolio with assets above a certain amoount
+router.route("/:price/totalAssetValue")
+.get(async(req,res)=>{
+    let assets = await Portfolio.priceAbove(Number(req.params.price));
+
+    res.json(assets)
+})
+
 
 export default router;
